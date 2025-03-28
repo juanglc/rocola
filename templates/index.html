@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rockola</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>🎵 Rockola - Juan Guillermo López Cortés 🎵</h1>
+
+    <div class="catalogo">
+        <button onclick="anteriorCancion()">⬅️ Anterior</button>
+        <div id="cancion-actual">
+            <h2 id="nombre-cancion">Cargando...</h2>
+            <p id="autor">Autor: -</p>
+            <p id="duracion">Duración: -</p>
+            <p id="genero">Género: -</p>
+            <p id="indice">Índice: -</p> <!-- New element for displaying the index -->
+        </div>
+        <button onclick="siguienteCancion()">➡️ Siguiente</button>
+    </div>
+
+    <form id="formPila">
+        <h3>Agregar Canción en Pila (LIFO)</h3>
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="text" name="author" placeholder="Autor" required>
+        <input type="text" name="duration" placeholder="Duración" required>
+        <input type="text" name="genre" placeholder="Género" required>
+        <button type="submit">Agregar en Pila</button>
+    </form>
+
+    <form id="formCola">
+        <h3>Agregar Canción en Cola (FIFO)</h3>
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="text" name="author" placeholder="Autor" required>
+        <input type="text" name="duration" placeholder="Duración" required>
+        <input type="text" name="genre" placeholder="Género" required>
+        <button type="submit">Agregar en Cola</button>
+    </form>
+
+    <form id="formUpdate">
+        <h3>Actualizar Canción</h3>
+        <input type="hidden" id="currentIndex" value="0">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="author" placeholder="Author">
+        <input type="text" id="duration" placeholder="Duration">
+        <input type="text" id="genre" placeholder="Genre">
+        <button id="updateButton">Actualizar Canción</button>
+    </form>
+
+    <button id="deleteButton">Eliminar Canción</button>
+
+    <button onclick="guardarCanciones()">Guardar Canciones en la Base de Datos</button>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
